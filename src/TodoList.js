@@ -9,7 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid"; */
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, removeTodo, toggleTodo }) => {
+const TodoList = ({ todos, removeTodo, toggleTodo, updateTodo }) => {
   return (
     <Paper>
       <List>
@@ -19,6 +19,7 @@ const TodoList = ({ todos, removeTodo, toggleTodo }) => {
             key={todo.id}
             removeTodo={removeTodo}
             toggleTodo={toggleTodo}
+            updateTodo={updateTodo}
           />
         ))}
       </List>
