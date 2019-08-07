@@ -14,10 +14,10 @@ const TodoList = ({ todos }) => {
   return (
     <Paper>
       <List>
-        {todos.map(({ task }) => (
+        {todos.map(({ id, task }) => (
           <>
             <ListItem>
-              <ListItemText>{task}</ListItemText>
+              <ListItemText>{`${id}: ${task}`}</ListItemText>
             </ListItem>
             <Divider />
           </>
