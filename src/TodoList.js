@@ -7,17 +7,19 @@ import List from "@material-ui/core/List";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid"; */
-import TodoItem from './TodoItem';
+import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, removeTodo, toggleTodo }) => {
   return (
     <Paper>
       <List>
         {todos.map(todo => (
-          <>
-            <TodoItem {...todo} key={todo.id} />
-            <Divider />
-          </>
+          <TodoItem
+            {...todo}
+            key={todo.id}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+          />
         ))}
       </List>
     </Paper>
