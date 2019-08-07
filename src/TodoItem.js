@@ -37,7 +37,7 @@ const TodoItem = ({
   );
 
   return (
-    <ListItem>
+    <ListItem style={{height: '64px'}}>
       {isEditing ? (
         <EditingForm
           id={id}

@@ -12,12 +12,16 @@ const EditingForm = ({ id, task, updateTodo, toggleIsEditing }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{
+      marginLeft: '1rem',
+      width: '60%'
+    }}>
       <TextField
         value={value}
         onChange={updateValue}
         margin="normal"
-        style={{width: '100%'}}
+        fullWidth
+        autoFocus
       />
     </form>
   );
