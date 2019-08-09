@@ -11,7 +11,7 @@ import EditingForm from "./EditingForm";
 import { TodosContext } from "./contexts/TodosContext";
 
 const TodoItem = ({ id, task, completed }) => {
-  const { removeTodo, toggleTodo } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   const [isEditing, toggleIsEditing] = useToggleState();
   const listItem = (
     <>
@@ -19,7 +19,12 @@ const TodoItem = ({ id, task, completed }) => {
         checked={completed}
         disableRipple
         tabIndex={-1}
-        onClick={() => toggleTodo(id)}
+        onClick={() =>
+          dispatch({
+            type: "TOGGLE_COMPLETED",
+            id
+          })
+        }
       />
       <ListItemText
         style={{
@@ -34,16 +39,20 @@ const TodoItem = ({ id, task, completed }) => {
   return (
     <ListItem style={{ height: "64px" }}>
       {isEditing ? (
-        <EditingForm
-          id={id}
-          task={task}
-          toggleIsEditing={toggleIsEditing}
-        />
+        <EditingForm id={id} task={task} toggleIsEditing={toggleIsEditing} />
       ) : (
         listItem
       )}
       <ListItemSecondaryAction>
-        <IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
+        <IconButton
+          aria-label="Delete"
+          onClick={() =>
+            dispatch({
+              type: "REMOVE",
+              id
+            })
+          }
+        >
           <DeleteIcon />
         </IconButton>
         <IconButton aria-label="Edit" onClick={toggleIsEditing}>
