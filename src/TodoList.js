@@ -1,11 +1,14 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 
 import TodoItem from "./TodoItem";
+import { TodosContext } from "./contexts/TodosContext";
 
-const TodoList = ({ todos, removeTodo, toggleTodo, updateTodo }) => {
+const TodoList = () => {
+  const { todos } = useContext(TodosContext);
+
   if (todos.length === 0) return null;
   
   return (
@@ -15,9 +18,6 @@ const TodoList = ({ todos, removeTodo, toggleTodo, updateTodo }) => {
           <Fragment key={todo.id}>
             <TodoItem
               {...todo}
-              removeTodo={removeTodo}
-              toggleTodo={toggleTodo}
-              updateTodo={updateTodo}
             />
             {index < todos.length - 1 && <Divider />}
           </Fragment>

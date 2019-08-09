@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import useInputState from "./hooks/useInputState";
 import TextField from "@material-ui/core/TextField";
+import { TodosContext } from "./contexts/TodosContext";
 
-const EditingForm = ({ id, task, updateTodo, toggleIsEditing }) => {
+const EditingForm = ({ id, task, toggleIsEditing }) => {
+  const { updateTodo } = useContext(TodosContext);
   const [value, updateValue, resetValue] = useInputState(task);
   const handleSubmit = evt => {
     evt.preventDefault();
